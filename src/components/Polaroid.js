@@ -1,5 +1,8 @@
-// Function to insert quote/author into HTML elements using props
-function GetQuote({ quotes }) {
+// import GetImage component
+import GetImage from './GetImage.js';
+
+// Function to insert quote/author & images into HTML elements using props
+function Polaroid({ quotes }) {
     return (
         <>
             {quotes.length === 0 ? (
@@ -11,8 +14,11 @@ function GetQuote({ quotes }) {
                     { quotes.map(({_id, content, author }) => {
                             return (
                                 <li key={_id}>
-                                    <h3>{content}</h3>
-                                    <p>{author}</p>
+                                    <GetImage />
+                                    <div>
+                                        <h3>{content}</h3>
+                                        <p>{author}</p>
+                                    </div>
                                 </li>
                             );
                         })
@@ -24,4 +30,4 @@ function GetQuote({ quotes }) {
     )
 }
 
-export default GetQuote;
+export default Polaroid;

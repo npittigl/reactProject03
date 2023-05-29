@@ -4,10 +4,10 @@ import { useState } from 'react';
 // form function; event handler from DisplayResults is passed down to Form component via (destructured) props
 function Form({ handleSubmit }) {
 
-    // 1. initialized state to store user's selected value from the drop down menu
+    // initialized state to store user's selected value from drop down menu
     const [userSelection, setUserSelection] = useState("Choose One:");
 
-    // 2. event handler to update state to reflect user's topic selection
+    // event handler to update state to reflect user's topic selection
     const handleChange = (event) => {
         setUserSelection(event.target.value);
     }
@@ -30,7 +30,6 @@ function Form({ handleSubmit }) {
                     onChange={handleChange}
                     id="topicChoices"
                     name="topicChoices"
-                    required={true}
             >
                 <option value="Choose One:" disabled>Choose One:</option>
                 <option value="life, change">Change</option>

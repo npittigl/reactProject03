@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 // Import children components
 import Form from './Form.js';
-import GetQuote from './GetQuote.js';
+import Polaroid from './Polaroid.js';
 
 // Component to display results
 function DisplayResults() {
@@ -16,9 +16,9 @@ function DisplayResults() {
 
     const numQuotesToGenerate = 1;
 
-    // define side effect that makes call to the Quotable API 
+    // define side effect that updates quotes state
     useEffect(() => {
-        // function to trigger axios request for api data
+        // function to trigger axios request for api data from Quotable API
         const getApiData = () => {
             axios({
                 url: 'https://api.quotable.io/search/quotes',
@@ -80,32 +80,9 @@ function DisplayResults() {
     return (
         <>
             <Form handleSubmit={handleSubmit} />
-            <GetQuote quotes={quotes} />
+            <Polaroid quotes={quotes} />
         </>
     );
-
-    // return (
-    //     <section>
-    //         {/* Pass Form submit event handler function down via props */}
-    //         <Form
-    //             handleSubmit={selectTopic}
-    //         />
-    //         {quotes &&
-    //             ( <ul>
-    //                 {/* map through state array & for each object in array it will return a Quote component; info passed down via props */}
-    //                 {quotes.map(({ _id, content, author }) => {
-    //                     return (
-    //                         <GetQuote
-    //                             key={_id}
-    //                             quote={content}
-    //                             author={author}
-    //                         />
-    //                     );
-    //                 })}
-    //             </ul>)
-    //         }
-    //     </section>
-    // );
 }
 
 export default DisplayResults;
