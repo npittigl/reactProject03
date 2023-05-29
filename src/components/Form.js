@@ -3,25 +3,36 @@ import { useState } from 'react';
 
 // form function; event handler from DisplayResults is passed down to Form component via (destructured) props
 function Form({ handleSubmit }) {
-    // 1. initialize state to store changing selected value w/in the drop down
-    const [selection, setSelection] = useState("");
 
-    // 2. declare change event handler that updates state to reflect user's topic choice
+    // 1. initialized state to store user's selected value from the drop down menu
+    const [userSelection, setUserSelection] = useState("Choose One:");
+
+    // 2. event handler to update state to reflect user's topic selection
     const handleChange = (event) => {
-        setSelection(event.target.value);
+        setUserSelection(event.target.value);
     }
 
     return (
         // when form submitted, handleSubmit function passed via props from DisplayResults component will be called
-        <form action="" onSubmit={ (event) => {handleSubmit(event, selection)} }>
-            <label>Which do you seek enlightenment in?</label>
+        <form
+            htmlFor="topicChoices"  
+            name="form" 
+            onSubmit={
+                (event) => {
+                    handleSubmit(event, userSelection)
+                }
+            }
+        >
+            <label htmlFor="topicChoices">Which do you seek enlightenment in?</label>
             {/* bind onChange event to dropdown & pass handleChange event handler; react dictates value into select element */}
-            <select name="" 
-                    id=""
+            <select 
+                    value={userSelection}
                     onChange={handleChange}
-                    value={selection}
+                    id="topicChoices"
+                    name="topicChoices"
+                    required={true}
             >
-                <option value="" defaultValue={'Choose one:'}>Choose one:</option>
+                <option value="Choose One:" disabled>Choose One:</option>
                 <option value="life, change">Change</option>
                 <option value="life, happiness">Happiness</option>
                 <option value="life">Life</option>
@@ -30,7 +41,7 @@ function Form({ handleSubmit }) {
                 <option value="wisdom">Wisdom</option>
                 <option value="work, motivation, inspiration">Work</option>
             </select>
-            <button type="submit">Enligten Me</button>
+            <button type="submit">Enlighten Me</button>
         </form>
     )
 }
