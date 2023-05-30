@@ -14,7 +14,7 @@ function DisplayResults() {
     // created state to store objects coming from Quotable API based on user's topic selection
     const [quotes, setQuotes] = useState([]);
 
-    const numQuotesToGenerate = 1;
+    const numQuotesToGenerate = 4;
 
     // define side effect that updates quotes state
     useEffect(() => {
@@ -78,10 +78,10 @@ function DisplayResults() {
     }
 
     return (
-        <>
+        <section className="gallery wrapper">
             <Form handleSubmit={handleSubmit} />
             <Polaroid quotes={quotes} />
-        </>
+        </section>
     );
 }
 

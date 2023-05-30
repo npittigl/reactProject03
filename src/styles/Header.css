@@ -1,0 +1,14 @@
+
+header {
+    display: flex;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-family: 'Satisfy', cursive;
+}
+
+header img {
+    width: 300px;
+
+}

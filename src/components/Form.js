@@ -23,7 +23,7 @@ function Form({ handleSubmit }) {
                 }
             }
         >
-            <label htmlFor="topicChoices">Which do you seek enlightenment in?</label>
+            <label htmlFor="topicChoices">Select a topic for instant inspiration.</label>
             {/* bind onChange event to dropdown & pass handleChange event handler; react dictates value into select element */}
             <select 
                     value={userSelection}
