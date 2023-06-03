@@ -4,14 +4,18 @@ import { useState, useEffect } from 'react';
 import Form from './Form.js';
 import Polaroid from './Polaroid.js';
 
-
+// function to display results
 function DisplayResults() {
+    // defined stateful variables
     const [quotes, setQuotes] = useState([]);
     const [images, setImages] = useState([]);
-    const [mergedArray, setMergedArray] = useState([])
+    const [mergedArray, setMergedArray] = useState([]);
+    const [displayCount, setDisplayCount] = useState(2);
 
+    // number of random quotes to generate
     const numQuotesToGenerate = 30;
 
+    // array of id's for unwanted images 
     const imagesToRemove = [
         { id: '5c5VcFshOds' },
         { id: '8lnbXtxFGZw' },
@@ -30,6 +34,19 @@ function DisplayResults() {
         { id: '09AhDCedXF8' },
         { id: 'UyNrNfdKjwg' }
     ];
+
+    // useEffect to merge quotes & images array; update mergedArray state and to rerender when quotes/images state changes
+    useEffect(() => {
+        // map over each image object to add key-value pairs of corresponding quote object (by index number) 
+        const quotesAndImages = images.map((item, index) => {
+            return { ...item, ...quotes[index] };
+        });
+
+        // update mergedArray state
+        setMergedArray(quotesAndImages);
+
+        // dependency array so component rerenders when quotes/images state changes
+    }, [quotes, images]);
 
     // function to make api calls
     const getApiData = async (quoteTopic) => {
@@ -119,7 +136,22 @@ function DisplayResults() {
             console.log(error);
         }
     }
-                    
+    
+    // event handler to add more li items to page by an increment of 2
+    const handleClickShowMore = () => {
+        let previousCount = displayCount;
+        setDisplayCount(previousCount + 2);
+    }
+
+    // array of items to be displayed
+    const itemsToDisplay = mergedArray.slice(0, displayCount);
+
+    // event handler to clear page of results
+    const handleClickNewSearch = () => {
+        setDisplayCount(0);
+    }
+
+    // what is rendered on page
     return (
         <section className="gallery wrapper">
             <Form handleSubmit={handleSubmit} />

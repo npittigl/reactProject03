@@ -2,7 +2,7 @@
 import { useState } from 'react';
 
 // form function; event handler from DisplayResults is passed down to Form component via (destructured) props
-function Form({ handleSubmit }) {
+function Form({ submitForm }) {
 
     // initialized state to store user's selected value from drop down menu
     const [userSelection, setUserSelection] = useState("Choose One:");
