@@ -1,11 +1,23 @@
 // Import useState
 import { useState } from 'react';
 
-// form function; event handler from DisplayResults is passed down to Form component via (destructured) props
+// form function
 function Form({ submitForm }) {
-
-    // initialized state to store user's selected value from drop down menu
+    // initialized state to store user's topic selection
     const [userSelection, setUserSelection] = useState("Choose One:");
+
+    // event handler for form submission
+    const handleSubmit = (event) => {
+        // prevent page reload on submit
+        event.preventDefault();
+
+        // update topic state with the user's choice
+        if (userSelection !== "Choose One:") {
+            submitForm(userSelection);
+        } else {
+            alert('Please select one category in order to receive an inspirational quote.');
+        }
+    }
 
     // event handler to update state to reflect user's topic selection
     const handleChange = (event) => {
@@ -13,17 +25,17 @@ function Form({ submitForm }) {
     }
 
     return (
-        // when form submitted, handleSubmit function passed via props from DisplayResults component will be called
+        // when form submitted, handleSubmit function will be called
         <form
             htmlFor="topicChoices"  
             name="form" 
             onSubmit={
                 (event) => {
-                    handleSubmit(event, userSelection)
+                    handleSubmit(event)
                 }
             }
         >
-            <label htmlFor="topicChoices">Select a topic for instant inspiration.</label>
+            <label htmlFor="topicChoices">Which do you seek enlightenment in?</label>
             {/* bind onChange event to dropdown & pass handleChange event handler; react dictates value into select element */}
             <select 
                     value={userSelection}
@@ -34,11 +46,10 @@ function Form({ submitForm }) {
                 <option value="Choose One:" disabled>Choose One:</option>
                 <option value="life, change">Change</option>
                 <option value="life, happiness">Happiness</option>
-                <option value="life">Life</option>
+                <option value="life, work">Life</option>
                 <option value="love">Love</option>
-                <option value="life, success">Success</option>
+                <option value="success, motivation, inspiration">Success</option>
                 <option value="wisdom">Wisdom</option>
-                <option value="work, motivation, inspiration">Work</option>
             </select>
             <button type="submit">Enlighten Me</button>
         </form>

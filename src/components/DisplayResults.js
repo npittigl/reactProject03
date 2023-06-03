@@ -153,9 +153,26 @@ function DisplayResults() {
 
     // what is rendered on page
     return (
-        <section className="gallery wrapper">
-            <Form handleSubmit={handleSubmit} />
-            <Polaroid quotes={quotes} />
+        <section className="wrapper">
+            <Form submitForm={getApiData} />
+            <ul className="gallery">
+                {itemsToDisplay.map(({ id, alt_description, image, author, quote }) => {
+                    return <Polaroid
+                        key={id}
+                        altText={alt_description}
+                        imageSource={image}
+                        authorName={author}
+                        quoteContent={quote}
+                    />
+                })}
+                {
+                    displayCount === 24 ? (
+                        <button className="newSearch" onClick={handleClickNewSearch}>New Search</button>
+                    ) : (
+                        <button className="showMore" onClick={handleClickShowMore}>Show More</button>
+                    )
+                }
+            </ul>
         </section>
     );
 }
