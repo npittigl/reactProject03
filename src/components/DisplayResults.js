@@ -1,82 +1,125 @@
 // Import hooks from React library
 import { useState, useEffect } from 'react';
-// Import axios
-import axios from 'axios';
 // Import children components
 import Form from './Form.js';
 import Polaroid from './Polaroid.js';
 
-// Component to display results
+
 function DisplayResults() {
-    // initialized state to store topic value as selected by user
-    const [quoteTopic, setQuoteTopic] =  useState(null);
-
-    // created state to store objects coming from Quotable API based on user's topic selection
     const [quotes, setQuotes] = useState([]);
+    const [images, setImages] = useState([]);
+    const [mergedArray, setMergedArray] = useState([])
 
-    const numQuotesToGenerate = 4;
+    const numQuotesToGenerate = 30;
 
-    // define side effect that updates quotes state
-    useEffect(() => {
-        // function to trigger axios request for api data from Quotable API
-        const getApiData = () => {
-            axios({
-                url: 'https://api.quotable.io/search/quotes',
-                method: 'GET',
-                dataReponse: 'json',
-                params: {
-                    // inject topic state into API call; as state changes, the API call (as dictated by dependency array) will run when form submitted
-                    query: quoteTopic,
-                    limit: 100
-                }
-            }).then((apiData) => {
-                // store api data in variable
-                const quotesArray = apiData.data.results;
+    const imagesToRemove = [
+        { id: '5c5VcFshOds' },
+        { id: '8lnbXtxFGZw' },
+        { id: 'W8Qqn1PmQH0' },
+        { id: 'G6G93jtU1vE' },
+        { id: 'fgmf2Eyrwm4' },
+        { id: 'nDeo4F3Zq28' },
+        { id: 'c333d6YEhi0' },
+        { id: 'gGbuETcoKjw' },
+        { id: 'bV_mp5XqWc4' },
+        { id: 'zunGugEsJCE' },
+        { id: 'l1AdCsEnjh0' },
+        { id: 'vKBdY7e7KFk' },
+        { id: 'MYu49bghVAM' },
+        { id: 'Ncn1jiEe-Wc' },
+        { id: '09AhDCedXF8' },
+        { id: 'UyNrNfdKjwg' }
+    ];
 
-                // filter out quotes that exceed 120 characters
-                const filteredQuotesArray = quotesArray.filter((quoteItem) => {
-                    return quoteItem.length <= 120;
-                });
+    // function to make api calls
+    const getApiData = async (quoteTopic) => {
+        // stored url endpoint for quotes API
+        const urlQuotes = new URL('https://api.quotable.io/search/quotes');
 
-                // variable to store random quote(s)
-                const randomizedQuotesArray = [];
+        // parameters for quotes API
+        urlQuotes.search = new URLSearchParams({
+            query: quoteTopic,
+            limit: 100
+        });
 
-                // function to push random quote from filtered array into new array
-                function randomQuotes(randomNumber) {
-                    randomizedQuotesArray.push(filteredQuotesArray[randomNumber]);
-                }
+        // stored url endpoint for images API
+        const urlImages = URL('https://api.unsplash.com/photos/random');
 
-                // for loop to generate random index number and call randomQuote() function
-                for(let i=0; i<numQuotesToGenerate; i++) {
-                    let randomImageIndex = Math.floor(Math.random() * filteredQuotesArray.length);
-                    randomQuotes(randomImageIndex);
-                }
+        // parameters for images API
+        urlImages.search = new URLSearchParams({
+            client_id: 'REqOx30PIWR_6rWocyz4elwZzhGfXxnuatZSAtqnhG8',
+            collections: '2738300',
+            count: 30,
+        })
 
-                // update state with array of randomized quotes
-                setQuotes(randomizedQuotesArray);
+        // fetch api data
+        try {
+            const responseArray = await Promise.all([
+                fetch(urlQuotes),
+                fetch(urlImages)
+            ])
+
+            // variables to store response data for quotes and images
+            const [quotesResponse, imagesResponse] = responseArray;
+
+            // request for json data
+            const quotesApiData = await quotesResponse.json();
+            const imagesApiData = await imagesResponse.json();
+            const imagesArray = imagesApiData;
+
+            // MANIPULATION OF QUOTES API DATA:
+
+            // 1. return quote objects whose length is less than 120; new array only includes author & quote info
+            const filteredQuotesArray = quotesArray.filter((quoteItem) => {
+                return quoteItem.length <= 120;
+            }).map((quote) => {
+                return (
+                    {
+                        author: quote.author,
+                        quote: quote.content
+                    }
+                )
             });
-        }
-        // if quoteTopic is not equal to null, then call getApiData function
-        if (quoteTopic !== null) {
-            getApiData();
-        }
-        
-        // use topic state inside dependency array, so every time state changes, the side effect (API call), runs and returns quotes based on user's chosen topic
-    }, [quoteTopic]);
 
-    // event handler to set user's topic choice & trigger useEffect upon form submission (passed to Form component via props)
-    const handleSubmit = (event, usersChoice) => {
-        // prevent page reload on submit
-        event.preventDefault();
+            // 2. empty array to house random selection of quotes
+            const randomizedQuotesArray = [];
 
-        // update topic state with the user's choice; if user submits before topic is chosen, user gets alert 
-        if (usersChoice !== "Choose One:") {
-            setQuoteTopic(usersChoice);
-        } else {
-            alert('Please select one category in order to receive an inspirational quote.');
+            // 3. function to generate and push random quote into new array
+            function randomQuotes(randomNumber) {
+                randomizedQuotesArray.push(filteredQuotesArray[randomNumber]);
+            }
+
+            // 4. for loop to generate random index number and use as argument to call randomQuotes()
+            for(let i=0; i<numQuotesToGenerate; i++) {
+                let randomImageIndex = Math.floor(Math.random() * filteredQuotesArray.length);
+                randomQuotes(randomImageIndex);
+            }
+
+            // 5. update quotes state with new array
+            setQuotes(randomizedQuotesArray);
+
+            // MANIPULATION OF IMAGES API DATA:
+
+            // 1. filter out unwanted images by id value (stored in imagesToRemove array) and return only necessary data in new array
+            const filteredImagesArray = imagesArray.filter((imageItem) => {
+                return !imagesToRemove.some((removeItem) => removeItem.id === imageItem.id);
+            }).map((image) => {
+                return (
+                    {
+                        id: image.id,
+                        alt_description: image.alt_description,
+                        image: image.urls.small
+                    }
+                )
+            });
+
+            // 2. update imagess state with new array
+            setImages(filteredImagesArray);
+        } catch (error) {
+            console.log(error);
         }
     }
-
+                    
     return (
         <section className="gallery wrapper">
             <Form handleSubmit={handleSubmit} />
