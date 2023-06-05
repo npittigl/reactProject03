@@ -1,5 +1,8 @@
 // Import useState
 import { useState } from 'react';
+// import styles
+import '../styles/Form.css';
+import pic from '../styles/assets/polaroidCamera05.png';
 
 // form function
 function Form({ submitForm }) {
@@ -27,6 +30,7 @@ function Form({ submitForm }) {
     return (
         // when form submitted, handleSubmit function will be called
         <form
+            className="flexContainer"
             htmlFor="topicChoices"  
             name="form" 
             onSubmit={
@@ -35,23 +39,29 @@ function Form({ submitForm }) {
                 }
             }
         >
-            <label htmlFor="topicChoices">Which do you seek enlightenment in?</label>
-            {/* bind onChange event to dropdown & pass handleChange event handler; react dictates value into select element */}
-            <select 
-                    value={userSelection}
-                    onChange={handleChange}
-                    id="topicChoices"
-                    name="topicChoices"
-            >
-                <option value="Choose One:" disabled>Choose One:</option>
-                <option value="life, change">Change</option>
-                <option value="life, happiness">Happiness</option>
-                <option value="life, work">Life</option>
-                <option value="love">Love</option>
-                <option value="success, motivation, inspiration">Success</option>
-                <option value="wisdom">Wisdom</option>
-            </select>
-            <button type="submit">Enlighten Me</button>
+            <div>
+                <img src={pic} alt="polaroid camera" className="camera" />
+            </div>
+
+            <div>
+                <label htmlFor="topicChoices">Which do you seek enlightenment in?</label>
+                {/* bind onChange event to dropdown & pass handleChange event handler */}
+                <select 
+                        value={userSelection}
+                        onChange={handleChange}
+                        id="topicChoices"
+                        name="topicChoices"
+                >
+                    <option value="Choose One:" disabled>Choose One:</option>
+                    <option value="life, change">Change</option>
+                    <option value="life, happiness">Happiness</option>
+                    <option value="life, work">Life</option>
+                    <option value="love">Love</option>
+                    <option value="success, motivation, inspiration">Success</option>
+                    <option value="wisdom">Wisdom</option>
+                </select>
+                <button type="submit">Enlighten Me</button>
+            </div>
         </form>
     )
 }

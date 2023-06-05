@@ -17,3 +17,11 @@ function Polaroid({ altText, imageSource, authorName, quoteContent }) {
 }
 
 export default Polaroid;
+
+// Sunday:
+    // 1. Start styling App
+
+// Monday/Tuesday: 
+    // 1. Finish Styling App
+    // 2. Accessible
+    // 3. Responsive

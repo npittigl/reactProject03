@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 // Import children components
 import Form from './Form.js';
 import Polaroid from './Polaroid.js';
+// import styles
+import '../styles/DisplayResults.css';
 
 // function to display results
 function DisplayResults() {
@@ -37,7 +39,7 @@ function DisplayResults() {
 
     // useEffect to merge quotes & images array; update mergedArray state and to rerender when quotes/images state changes
     useEffect(() => {
-        // map over each image object to add key-value pairs of corresponding quote object (by index number) 
+        // map over each image object to merge with quote object of corresponding index number from quotes array
         const quotesAndImages = images.map((item, index) => {
             return { ...item, ...quotes[index] };
         });
@@ -60,7 +62,7 @@ function DisplayResults() {
         });
 
         // stored url endpoint for images API
-        const urlImages = URL('https://api.unsplash.com/photos/random');
+        const urlImages = new URL('https://api.unsplash.com/photos/random');
 
         // parameters for images API
         urlImages.search = new URLSearchParams({
@@ -81,11 +83,11 @@ function DisplayResults() {
 
             // request for json data
             const quotesApiData = await quotesResponse.json();
+            const quotesArray = quotesApiData.results;
             const imagesApiData = await imagesResponse.json();
             const imagesArray = imagesApiData;
 
             // MANIPULATION OF QUOTES API DATA:
-
             // 1. return quote objects whose length is less than 120; new array only includes author & quote info
             const filteredQuotesArray = quotesArray.filter((quoteItem) => {
                 return quoteItem.length <= 120;
@@ -116,7 +118,6 @@ function DisplayResults() {
             setQuotes(randomizedQuotesArray);
 
             // MANIPULATION OF IMAGES API DATA:
-
             // 1. filter out unwanted images by id value (stored in imagesToRemove array) and return only necessary data in new array
             const filteredImagesArray = imagesArray.filter((imageItem) => {
                 return !imagesToRemove.some((removeItem) => removeItem.id === imageItem.id);
@@ -155,24 +156,33 @@ function DisplayResults() {
     return (
         <section className="wrapper">
             <Form submitForm={getApiData} />
-            <ul className="gallery">
-                {itemsToDisplay.map(({ id, alt_description, image, author, quote }) => {
-                    return <Polaroid
-                        key={id}
-                        altText={alt_description}
-                        imageSource={image}
-                        authorName={author}
-                        quoteContent={quote}
-                    />
-                })}
-                {
-                    displayCount === 24 ? (
-                        <button className="newSearch" onClick={handleClickNewSearch}>New Search</button>
+            {itemsToDisplay.length ? (
+                <ul className="gallery">
+                    {itemsToDisplay.map(({ id, alt_description, image, author, quote }) => {
+                        return (
+                            <Polaroid
+                                key={id}
+                                altText={alt_description}
+                                imageSource={image}
+                                authorName={author}
+                                quoteContent={quote}
+                            />
+                        )
+                    })}
+
+                    { displayCount === 24 ? (
+                        <div>
+                            <button className="newSearch" onClick={handleClickNewSearch}>New Search</button>
+                        </div>
                     ) : (
-                        <button className="showMore" onClick={handleClickShowMore}>Show More</button>
-                    )
-                }
-            </ul>
+                        <div>
+                            <button className="showMore" onClick={handleClickShowMore}>Show More</button>
+                            <button className="newSearch" onClick={handleClickNewSearch}>New Search</button>
+                        </div>
+                    )}
+                </ul>) : (
+                    <p>shake it like a polaroid picture</p>
+                )}
         </section>
     );
 }

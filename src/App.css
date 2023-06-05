@@ -27,9 +27,7 @@ button {
 }
 
 /* 20px default*/
-html {
-    font-size: 125%;
-}
+html { font-size: 125%; }
 
     /* font-family: 'Satisfy', cursive; */
     /* font-family: 'Caveat', cursive;
@@ -48,6 +46,10 @@ html {
     /* -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
 
+body {
+    background-color: #FFE3DC;
+}
+
 /* Wrapper */
 .wrapper {
     max-width: 1280px;
@@ -62,3 +64,5 @@ img {
     object-fit: cover;
     display: block;
 }
+
+.flexContainer { display: flex; }
