@@ -156,33 +156,35 @@ function DisplayResults() {
     return (
         <section className="wrapper">
             <Form submitForm={getApiData} />
-            {itemsToDisplay.length ? (
-                <ul className="gallery">
-                    {itemsToDisplay.map(({ id, alt_description, image, author, quote }) => {
-                        return (
-                            <Polaroid
-                                key={id}
-                                altText={alt_description}
-                                imageSource={image}
-                                authorName={author}
-                                quoteContent={quote}
-                            />
-                        )
-                    })}
 
-                    { displayCount === 24 ? (
+            {itemsToDisplay.length ? (
+                <>
+                    <ul className="gallery flexContainer">
+                        {itemsToDisplay.map(({ id, alt_description, image, author, quote }) => {
+                            return (
+                                <Polaroid
+                                    key={id}
+                                    altText={alt_description}
+                                    imageSource={image}
+                                    authorName={author}
+                                    quoteContent={quote}
+                                />
+                            )
+                        })}
+                    </ul>
+
+                    {displayCount === 24 ? (
                         <div>
                             <button className="newSearch" onClick={handleClickNewSearch}>New Search</button>
-                        </div>
-                    ) : (
+                        </div>) : (
                         <div>
                             <button className="showMore" onClick={handleClickShowMore}>Show More</button>
                             <button className="newSearch" onClick={handleClickNewSearch}>New Search</button>
-                        </div>
+                        </div> 
                     )}
-                </ul>) : (
-                    <p>shake it like a polaroid picture</p>
-                )}
+                </> ) : (
+                    <p>Shake it like a polaroid picture</p>
+            )}
         </section>
     );
 }

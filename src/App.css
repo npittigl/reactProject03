@@ -29,25 +29,64 @@ button {
 /* 20px default*/
 html { font-size: 125%; }
 
-    /* font-family: 'Satisfy', cursive; */
-    /* font-family: 'Caveat', cursive;
-    font-family: 'Crimson Text', serif;
-    font-family: 'Gentium Book Plus', serif;
-    font-family: 'Gentium Plus', serif;
-    font-family: 'Gloria Hallelujah', cursive;
-    font-family: 'Hind Siliguri', sans-serif;
-    font-family: 'IM Fell Great Primer', serif;
-    font-family: 'Indie Flower', cursive;
-    font-family: 'Montaga', serif;
-    font-family: 'Nunito Sans', sans-serif;
-    font-family: 'Sansita', sans-serif;
-    font-family: 'Taviraj', serif;
-  font-family: 'The Girl Next Door', cursive; */
-    /* -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
+        /* font-family: 'Caveat',
+        cursive;
+    
+        font-family: 'Cormorant',
+        serif;
+    
+        font-family: 'Cormorant Garamond',
+        serif;
+    
+        font-family: 'Cormorant Infant',
+        serif;
+    
+        font-family: 'Cormorant Upright',
+        serif;
+    
+        font-family: 'Crimson Text',
+        serif;
+    
+        font-family: 'Gentium Book Plus',
+        serif;
+    
+        font-family: 'Gentium Plus',
+        serif;
+    
+        font-family: 'Gloria Hallelujah',
+        cursive;
+    
+        font-family: 'Hind Siliguri',
+        sans-serif;
+    
+        font-family: 'IM Fell Great Primer',
+        serif;
+    
+        font-family: 'Indie Flower',
+        cursive;
+    
+        font-family: 'Montaga',
+        serif;
+    
+        font-family: 'Nunito Sans',
+        sans-serif;
+    
+        font-family: 'Sansita',
+        sans-serif;
+    
+        font-family: 'Satisfy',
+        cursive;
+    
+        font-family: 'Taviraj',
+        serif;
+    
+        font-family: 'The Girl Next Door',
+        cursive; */
 
 body {
+    min-height: 100vh;
     background-color: #FFE3DC;
+    color: #3A2D32;
 }
 
 /* Wrapper */

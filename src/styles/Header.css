@@ -1,11 +1,73 @@
 /* Styles for Header */
-h1 {
-    font-size: 3.5rem;
-    font-family: 'Satisfy', cursive;
+header {
+    padding: 2.5rem 0 2rem;
+    position: relative;
 }
 
+/* Styles for Polaroid Rainbow */
+.rainbowContainer { box-shadow: 0 3px 10px #3A2D32; }
+
+.div { height: 7px; }
+
+.div01 { background-color: #FFB6C1; }
+.div02 { background-color: #FB607F; }
+.div03 { background-color: #FFA500; }
+.div04 { background-color: #F4F482; }
+.div05 { background-color: #3CB043; }
+.div06 { background-color: #42E0D1; }
+
+/* Main Heading Styles */
+h1 {
+    color: #FFF;
+    font-size: 3.5rem;
+    text-shadow: 2px 4px 3px #3A2D32;
+    font-family: 'Satisfy', cursive;
+    padding-left: 30px;
+    position: absolute;
+    top: 11px;
+}
+
+/* Sub Heading Styles */
 h2 {
-    /* font-family: 'Caveat', cursive; */
-    /* font-family: 'Nunito Sans', sans-serif; */
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.8px;
     font-family: 'Sansita', sans-serif;
+    text-align: right;
+    padding: 10px 0;
+}
+
+/* Styles for Highlight */
+.highlightContainer,
+.highlight { 
+    position: relative; 
+    color: #3A2D32;
+}
+
+.highlightContainer { display: inline-block; }
+
+.highlightContainer:before {
+    content: " ";
+    display: block;
+    width: 100%;
+    margin-left: -3px;
+    margin-right: -3px;
+    padding: 10px 3px 3px 10px;
+    border-radius: 20% 25% 20% 24%;
+    background-color: #FFF;
+    opacity: 0.7;
+    transform: rotate(-3deg);
+    position: absolute;
+    top: 15px;
+    left: 1px;
+}
+
+/* Styles for Gradient */
+.gradient {
+    color: transparent;
+    font-size: 1.18rem;
+    letter-spacing: 2px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: linear-gradient(45deg, #553C9A, #AA0000);
 }

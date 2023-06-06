@@ -1,11 +1,13 @@
+// import styles
+import '../styles/Polaroid.css';
 
 // Function to insert quote/author & images into HTML elements using props
 function Polaroid({ altText, imageSource, authorName, quoteContent }) {
     return (
         <>
-            <li>
-                <div className="polaroidImage">
-                    <img src={imageSource} alt={altText} />
+            <li className="polaroidCard flexContainer">
+                <div className="imageContainer">
+                    <img src={imageSource} alt={altText} className="polaroidImage" />
                 </div>
                 <div className="polaroidText">
                     <h3>{quoteContent}</h3>
@@ -17,11 +19,3 @@ function Polaroid({ altText, imageSource, authorName, quoteContent }) {
 }
 
 export default Polaroid;
-
-// Sunday:
-    // 1. Start styling App
-
-// Monday/Tuesday: 
-    // 1. Finish Styling App
-    // 2. Accessible
-    // 3. Responsive

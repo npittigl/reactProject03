@@ -1,0 +1,35 @@
+/* Styles for Polaroid Pictures */
+
+/* <li className="polaroidCard">
+    <div className="polaroidImage">
+        <img src= {imageSource} alt={altText}/>
+    </div>
+        
+    <div className="polaroidText">
+        <h3>{quoteContent}</h3>
+        <p>{authorName}</p>
+    </div>
+</li> */
+
+.polaroidCard {
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 20px 10px;
+    width: calc((100% / 2) - 20px);
+    background-color: #FFF;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.imageContainer {
+    padding: 35px;
+}
+
+.polaroidImage {
+    width: 100%;
+    height: auto;
+}
+
+
+.polaroidText {
+    flex-grow: 1;
+}
