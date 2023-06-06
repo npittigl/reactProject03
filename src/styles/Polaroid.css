@@ -1,25 +1,9 @@
+
 /* Styles for Polaroid Pictures */
-
-/* <li className="polaroidCard">
-    <div className="polaroidImage">
-        <img src= {imageSource} alt={altText}/>
-    </div>
-        
-    <div className="polaroidText">
-        <h3>{quoteContent}</h3>
-        <p>{authorName}</p>
-    </div>
-</li> */
-
-ul { 
-    flex-wrap: wrap;
-    /* background-color: rgba(153, 255, 255, 0.3); */
-}
-
 .polaroidCard {
     flex-direction: column;
-    margin: 20px 5px ;
-    width: calc((100% / 3) - 10px);
+    margin: 20px 20px ;
+    width: calc((100% / 2) - 40px);
     background-color: #FFF;
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -31,11 +15,14 @@ ul {
 
 .polaroidImage {
     width: 100%;
-    height: 300px;
+    height: 350px;
     border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .polaroidText {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     flex-grow: 1;
     padding: 25px;
     text-align: center;
@@ -49,9 +36,37 @@ h3 {
 }
 
 .polaroidText p {
+    color: #000;
     font-size: 0.95rem;
     line-height: 1rem;
     letter-spacing: 1px;
     font-family: 'Satisfy', cursive;
     padding: 1rem 0 0.5rem 0;
+    position: relative;
+    display: inline-block;
+    z-index: 10;
+}
+
+.authorHighlight:before {
+    content: " ";
+    display: block;
+    width: 100%;
+    margin-left: -3px;
+    margin-right: -3px;
+    padding: 10px 3px 3px 10px;
+    border-radius: 20% 25% 20% 24%;
+    opacity: 0.7;
+    transform: rotate(-3deg);
+    position: absolute;
+    top: 28px;
+    left: 1px;
+    z-index: -10;
+}
+
+ul li:nth-child(even) .authorHighlight:before {
+    background-color: #F4AFAB;
+}
+
+ul li:nth-child(odd) .authorHighlight:before {
+    background-color: #99FFFF;
 }

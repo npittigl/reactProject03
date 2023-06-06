@@ -5,6 +5,8 @@ import Form from './Form.js';
 import Polaroid from './Polaroid.js';
 // import styles
 import '../styles/DisplayResults.css';
+import '../styles/MediaQueries.css';
+import pic from '../styles/assets/polaroidCamera05.png';
 
 // function to display results
 function DisplayResults() {
@@ -12,7 +14,7 @@ function DisplayResults() {
     const [quotes, setQuotes] = useState([]);
     const [images, setImages] = useState([]);
     const [mergedArray, setMergedArray] = useState([]);
-    const [displayCount, setDisplayCount] = useState(3);
+    const [displayCount, setDisplayCount] = useState(4);
 
     // number of random quotes to generate
     const numQuotesToGenerate = 30;
@@ -141,7 +143,7 @@ function DisplayResults() {
     // event handler to add more li items to page by an increment of 2
     const handleClickShowMore = () => {
         let previousCount = displayCount;
-        setDisplayCount(previousCount + 3);
+        setDisplayCount(previousCount + 4);
     }
 
     // array of items to be displayed
@@ -154,9 +156,14 @@ function DisplayResults() {
 
     // what is rendered on page
     return (
-        <section className="wrapper">
-            <Form submitForm={getApiData} />
-
+        <section className="resultsSection wrapper">
+            <div className=" formContainer flexContainer">
+                <div className="camera flexContainer">
+                    <img src={pic} alt="polaroid camera" />
+                </div>
+                <Form submitForm={getApiData} />
+            </div>
+    
             {itemsToDisplay.length ? (
                 <>
                     <ul className="gallery flexContainer">
@@ -172,19 +179,12 @@ function DisplayResults() {
                             )
                         })}
                     </ul>
-
-                    {displayCount === 24 ? (
-                        <div>
-                            <button className="newSearch" onClick={handleClickNewSearch}>New Search</button>
-                        </div>) : (
-                        <div>
-                            <button className="showMore" onClick={handleClickShowMore}>Show More</button>
-                            <button className="newSearch" onClick={handleClickNewSearch}>New Search</button>
-                        </div> 
-                    )}
-                </> ) : (
-                    <p>Shake it like a polaroid picture</p>
-            )}
+                    <div className="buttonsContainer flexContainer">
+                        {displayCount === 24 ? null : <button className="showMore" onClick={handleClickShowMore}>Show More</button>}
+                        <button className="newSearch" onClick={handleClickNewSearch}>New Search</button>
+                    </div>
+                </> ) : null
+            }
         </section>
     );
 }

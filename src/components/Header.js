@@ -1,5 +1,6 @@
 // import styles
 import '../styles/Header.css';
+import '../styles/MediaQueries.css';
 
 
 function Header() {

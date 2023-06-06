@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header.js';
 import DisplayResults from './components/DisplayResults.js';
 import Footer from './components/Footer.js';
+import './styles/MediaQueries.css';
 
 function App() {
   return (

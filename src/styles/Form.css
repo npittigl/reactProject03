@@ -1,0 +1,51 @@
+/* Styles for Form */
+
+form {
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+    font-size: 1.1rem;
+    padding-left: 1.5rem;
+}
+
+label {
+    width: 100%;
+    font-weight: bold;
+    text-align: left;
+    padding: 10px 20px;
+}
+
+.selectionContainer {
+    width: 100%;
+    text-align: left;
+}
+
+select {
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+    margin: 5px 0 5px 20px;
+    width: calc(50% - 20px);
+    background-color: #F7EDF0;
+    border: 3px solid #3A2D32;
+}
+
+.submit {
+    margin: 5px 10px;
+    width: calc(35% - 20px);
+}
+
+select,
+.submit {
+    padding: 15px;
+}
+
+.submit {
+    background-color: #F4CBC6;
+    border: 3px solid #3A2D32;
+}
+
+.submit:hover,
+.submit:focus {
+    background-color: #F7EDF0;
+}

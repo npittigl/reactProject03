@@ -26,73 +26,24 @@ button {
     padding: 0;
 }
 
+ul { list-style: none; }
+
+select, button { border: none; }
+
 /* 20px default*/
 html { font-size: 125%; }
 
-        /* font-family: 'Caveat',
-        cursive;
-    
-        font-family: 'Cormorant',
-        serif;
-    
-        font-family: 'Cormorant Garamond',
-        serif;
-    
-        font-family: 'Cormorant Infant',
-        serif;
-    
-        font-family: 'Cormorant Upright',
-        serif;
-    
-        font-family: 'Crimson Text',
-        serif;
-    
-        font-family: 'Gentium Book Plus',
-        serif;
-    
-        font-family: 'Gentium Plus',
-        serif;
-    
-        font-family: 'Gloria Hallelujah',
-        cursive;
-    
-        font-family: 'Hind Siliguri',
-        sans-serif;
-    
-        font-family: 'IM Fell Great Primer',
-        serif;
-    
-        font-family: 'Indie Flower',
-        cursive;
-    
-        font-family: 'Montaga',
-        serif;
-    
-        font-family: 'Nunito Sans',
-        sans-serif;
-    
-        font-family: 'Sansita',
-        sans-serif;
-    
-        font-family: 'Satisfy',
-        cursive;
-    
-        font-family: 'Taviraj',
-        serif;
-    
-        font-family: 'The Girl Next Door',
-        cursive; */
-
 body {
-    min-height: 100vh;
-    background-color: #FFE3DC;
     color: #3A2D32;
+    letter-spacing: 0.8px;
+    font-family: 'Hind Siliguri', sans-serif;
+    background-color: #FFE3DC;
 }
 
 /* Wrapper */
 .wrapper {
     max-width: 1280px;
-    width: 85%;
+    width: 90%;
     margin: 0 auto;
 }
 
@@ -104,4 +55,12 @@ img {
     display: block;
 }
 
+/* General Button Styles */
+button {
+    cursor: pointer;
+    letter-spacing: 1.2px;
+    font-weight: bold;
+}
+
+/* Displaly */
 .flexContainer { display: flex; }

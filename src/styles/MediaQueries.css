@@ -1,0 +1,41 @@
+/* Media Queries */
+
+/* Portrait tablet and small desktops */
+@media (max-width: 940px) {
+    ul li:nth-child(odd) {
+        margin: 20px 10px 20px 0;
+        width: calc((100%/2) - 10px);
+    } 
+
+    ul li:nth-child(even) {
+        margin: 20px 0 20px 10px;
+        width: calc((100%/2) - 10px);
+    }
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+    .gallery .polaroidCard {
+        width: 100%;
+        margin: 20px 0px;
+    }
+
+    label,
+    .selectionContainer {
+        text-align: right;
+    }
+    
+    select {
+        width: 60%;
+        margin-right: 5px;
+        width: calc(50% - 5px);
+    }
+
+    .submit {
+        margin: 0 5px;
+        width: calc(50% - 10px);
+    }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {}

@@ -2,7 +2,7 @@
 import { useState } from 'react';
 // import styles
 import '../styles/Form.css';
-import pic from '../styles/assets/polaroidCamera05.png';
+import '../styles/MediaQueries.css';
 
 // form function
 function Form({ submitForm }) {
@@ -39,13 +39,9 @@ function Form({ submitForm }) {
                 }
             }
         >
-            <div>
-                <img src={pic} alt="polaroid camera" className="camera" />
-            </div>
-
-            <div>
-                <label htmlFor="topicChoices">Which do you seek enlightenment in?</label>
-                {/* bind onChange event to dropdown & pass handleChange event handler */}
+            <label htmlFor="topicChoices">Which do you seek enlightenment in?</label>
+            {/* bind onChange event to dropdown & pass handleChange event handler */}
+            <div className="selectionContainer">
                 <select 
                         value={userSelection}
                         onChange={handleChange}
@@ -60,7 +56,7 @@ function Form({ submitForm }) {
                     <option value="success, motivation, inspiration">Success</option>
                     <option value="wisdom">Wisdom</option>
                 </select>
-                <button type="submit">Enlighten Me</button>
+                <button className="submit" type="submit">Submit</button>
             </div>
         </form>
     )
