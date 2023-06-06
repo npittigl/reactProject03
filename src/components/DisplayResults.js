@@ -12,7 +12,7 @@ function DisplayResults() {
     const [quotes, setQuotes] = useState([]);
     const [images, setImages] = useState([]);
     const [mergedArray, setMergedArray] = useState([]);
-    const [displayCount, setDisplayCount] = useState(2);
+    const [displayCount, setDisplayCount] = useState(3);
 
     // number of random quotes to generate
     const numQuotesToGenerate = 30;
@@ -141,7 +141,7 @@ function DisplayResults() {
     // event handler to add more li items to page by an increment of 2
     const handleClickShowMore = () => {
         let previousCount = displayCount;
-        setDisplayCount(previousCount + 2);
+        setDisplayCount(previousCount + 3);
     }
 
     // array of items to be displayed

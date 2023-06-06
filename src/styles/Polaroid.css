@@ -11,25 +11,47 @@
     </div>
 </li> */
 
+ul { 
+    flex-wrap: wrap;
+    /* background-color: rgba(153, 255, 255, 0.3); */
+}
+
 .polaroidCard {
     flex-direction: column;
-    justify-content: space-between;
-    margin: 20px 10px;
-    width: calc((100% / 2) - 20px);
+    margin: 20px 5px ;
+    width: calc((100% / 3) - 10px);
     background-color: #FFF;
+    border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .imageContainer {
-    padding: 35px;
+    padding: 20px 20px 0 20px;
 }
 
 .polaroidImage {
     width: 100%;
-    height: auto;
+    height: 300px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
 }
-
 
 .polaroidText {
     flex-grow: 1;
+    padding: 25px;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1rem;
+    line-height: 1.3rem;
+    letter-spacing: 1px;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+.polaroidText p {
+    font-size: 0.95rem;
+    line-height: 1rem;
+    letter-spacing: 1px;
+    font-family: 'Satisfy', cursive;
+    padding: 1rem 0 0.5rem 0;
 }

@@ -11,7 +11,7 @@ function Polaroid({ altText, imageSource, authorName, quoteContent }) {
                 </div>
                 <div className="polaroidText">
                     <h3>{quoteContent}</h3>
-                    <p>{authorName}</p>
+                    <p>- {authorName} - </p>
                 </div>
             </li>
         </>
