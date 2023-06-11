@@ -1,0 +1,15 @@
+/* STYLES FOR FOOTER */
+footer {
+    padding: 10px 0;
+    font-size: 0.80rem;
+    line-height: 0.85rem;
+}
+
+footer a {
+    padding-bottom: 3px;
+    text-decoration: none;
+}
+
+a:hover, a:focus,
+.errorMessage { color: #AA0000; }
+

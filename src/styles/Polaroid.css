@@ -1,0 +1,110 @@
+/* STYLES FOR POLAROID PICTURES */
+.polaroidCard {
+    margin: 20px;
+    width: calc((100% / 2) - 40px);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* Polaroid Images Styles */
+.imageContainer { padding: 20px 20px 0 20px; }
+
+.polaroidImage {
+    height: 350px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.overlay {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 20px 20px 0 20px;
+    background-color: #000;
+}
+
+/* Polaroid Text Styles */
+.polaroidText {
+    flex-grow: 1;
+    padding: 25px;
+}
+
+h3 {
+    line-height: 1.3rem;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+.polaroidText p {
+    color: #000;
+    line-height: 1rem;
+    font-size: 0.95rem;
+    padding: 1rem 0 0.5rem 0;
+    z-index: 10;
+}
+
+/* Highlight Styles */
+.authorHighlight:before {
+    top: 23px;
+    left: 1px;
+    z-index: -10;
+}
+
+ul li:nth-child(odd) .authorHighlight:before { background-color: #99FFFF; }
+
+ul li:nth-child(even) .authorHighlight:before { background-color: #F4AFAB; }
+
+/* Polaroid Animation */
+.fadeOutOpacity {
+    animation: fadeOut 6s  0.8s ease-in forwards;
+    -webkit-animation: fadeOut 6s  0.8s ease-in forwards;
+    -moz-animation: fadeOut 6s 0.8s ease-in forwards;
+    -o-animation: fadeOut 6s 0.8s ease-in forwards;
+    -ms-animation: fadeOut 6s 0.8s ease-in forwards;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    25% { opacity: 0.8; }
+    50% { opacity: 0.6; }
+    75% { opacity: 0.4; }
+    85% { opacity: 0.2; }
+    100% { opacity: 0; }
+}
+
+@-moz-keyframes fadeOut {
+    0% { opacity: 1; }
+    25% { opacity: 0.8; }
+    50% { opacity: 0.6; }
+    75% { opacity: 0.4; }
+    85% { opacity: 0.2; }
+    100% { opacity: 0; }
+}
+
+@-webkit-keyframes fadeOut {
+    0% { opacity: 1; }
+    25% { opacity: 0.8; }
+    50% { opacity: 0.6; }
+    75% { opacity: 0.4; }
+    85% { opacity: 0.2; }
+    100% { opacity: 0; }
+}
+
+@-o-keyframes fadeOut {
+    0% { opacity: 1; }
+    25% { opacity: 0.8; }
+    50% { opacity: 0.6; }
+    75% { opacity: 0.4; }
+    85% { opacity: 0.2; }
+    100% { opacity: 0; }
+}
+
+@-ms-keyframes fadeOut {
+    0% { opacity: 1; }
+    25% { opacity: 0.8; }
+    50% { opacity: 0.6; }
+    75% { opacity: 0.4; }
+    85% { opacity: 0.2; }
+    100% { opacity: 0; }
+}
+

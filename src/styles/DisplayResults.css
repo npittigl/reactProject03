@@ -1,0 +1,71 @@
+/* STYLES FOR RESULTS SECTION/GALLERY */
+.resultsSection, ul { padding: 2rem 0; }
+
+ul { flex-wrap: wrap; }
+
+/* Gallery Buttons Styles */
+.buttonsContainer { justify-content: space-evenly; }
+
+.showMore,
+.newSearch {
+    background-color: #F4CBC6;
+    border: 3px solid #3A2D32;
+    padding: 15px 25px;
+}
+
+.showMore:hover, .showMore:focus,
+.newSearch:hover, .newSearch:focus { background-color: #F7EDF0; }
+
+
+/* MEDIA QUERIES */
+@media (max-width: 940px) {
+    ul li:nth-child(odd) {
+        margin: 20px 10px 20px 0;
+        width: calc((100%/2) - 10px);
+    }
+
+    ul li:nth-child(even) {
+        margin: 20px 0 20px 10px;
+        width: calc((100%/2) - 10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery .polaroidCard {
+        width: 100%;
+        margin: 20px 0px;
+    }
+} 
+
+@media (max-width: 480px) {
+    .wrapper { width: 95%; }
+
+    .gallery { padding-top: 1rem; }
+
+    .imageContainer { padding: 15px 15px 0 15px; }
+
+    .overlay { margin: 15px 15px 0 15px; }
+
+    .polaroidImage { height: 280px; }
+
+    .polaroidText {
+        font-size: 0.85rem;
+        line-height: 1rem;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 380px) {
+    .buttonsContainer { flex-direction: column; }
+
+    .showMore, .newSearch { margin: 2%; }
+}
+
+/* Max-Height */
+@media (max-height: 420px) {
+    .imageContainer { padding: 12px 12px 0 12px; }
+
+    .overlay { margin: 12px 12px 0 12px; }
+
+    .polaroidImage { height: 260px; }
+}

@@ -1,0 +1,72 @@
+/* STYLES FOR HEADER */
+header { padding: 0.45rem 0 1rem; }
+
+/* Styles for Polaroid Rainbow */
+.rainbowContainer {
+    box-shadow: 0 3px 10px #3A2D32;
+    z-index: -100;
+    top: 45px;
+}
+
+.div { height: 7px; }
+
+.div01 { background-color: #FFB6C1; }
+.div02 { background-color: #FB607F; }
+.div03 { background-color: #FFA500; }
+.div04 { background-color: #F4F482; }
+.div05 { background-color: #3CB043; }
+.div06 { background-color: #42E0D1; }
+
+/* Main Heading Styles */
+h1 {
+    font-size: 3.5rem;
+    color: rgba(58, 45, 50, 0.85);
+    text-shadow: -1px -1px 1px #FFF;
+}
+
+/* Sub Heading Styles */
+h2 {
+    margin-top: 5px;
+    line-height: 1.2rem;
+}
+
+/* Positioning for Sub-heading Highlight */
+.highlightContainer:before {
+    top: 11px;
+    left: 1px;
+}
+
+/* Styles for Gradient */
+.gradient {
+    color: transparent;
+    font-family: 'Sansita', sans-serif;
+    font-size: 1.18rem;
+    letter-spacing: 2px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: linear-gradient(45deg, #553C9A, #AA0000);
+}
+
+
+/* MEDIA QUERIES */
+@media (max-width: 480px) {
+    header { padding-top: 0.65rem; }
+
+    .rainbowContainer { top: 35px; }
+
+    h1 { font-size: 2.5rem; }
+
+    h2 {
+        font-size: 0.92rem;
+        letter-spacing: 1.5px;
+        margin-top: 15px;
+    }
+
+    .highlightContainer:before { top: 10px; }
+
+    .gradient { font-size: 1rem; }
+}
+
+@media (max-width: 320px) {
+    h2 { text-align: center; }
+}
