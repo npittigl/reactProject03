@@ -9,6 +9,7 @@ form {
     left: 30px;
     width: 30%;
     min-width: 200px;
+    z-index: 100;
 }
 
 /* Form label/select/button Styles */
@@ -86,8 +87,8 @@ select:hover, select:focus,
     form { flex-direction: column; }
 
     .camera {
-        position: static;
         width: 55%;
+        left: 0;
     }
 
     .selectionContainer {
@@ -95,6 +96,5 @@ select:hover, select:focus,
         padding: 3rem 1rem 2rem;
         position: relative;
         bottom: 50px;
-        z-index: -100;
     }
 }
