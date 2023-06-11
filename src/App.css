@@ -9,58 +9,114 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 @media (prefers-reduced-motion: no-preference) {
 }
 
-/* Stripping Styles */
-body,
-h1,
-h2,
-h3,
-ul,
-li,
-p,
-form,
-label,
-select,
-option,
-button {
+/* STRIPPING STYLES */
+body, h1, h2, 
+h3, ul, li, 
+p, form, label, 
+select, option, 
+button, footer {
     margin: 0;
     padding: 0;
 }
 
 ul { list-style: none; }
 
-select, button { border: none; }
-
-/* 20px default*/
-html { font-size: 125%; }
+/* TYPOGRAPHY STYLES */
+html { font-size: 125%; } /* 20px default*/
 
 body {
-    color: #3A2D32;
     letter-spacing: 0.8px;
     font-family: 'Hind Siliguri', sans-serif;
     background-color: #FFE3DC;
 }
 
-/* Wrapper */
+h2, h3, select { font-size: 1rem; }
+
+body, .highlightContainer,
+.highlight, select { color: #3A2D32; }
+
+select, footer { letter-spacing: 1.2px; }
+
+h2, h3, .polaroidText p { letter-spacing: 1px; }
+
+h2, label { text-align: right; }
+
+.errorMessage, .polaroidText, footer { text-align: center; }
+
+button, label, select, footer { font-weight: bold; }
+
+h1, .polaroidText p { font-family: 'Satisfy', cursive; }
+
+/* WRAPPER */
 .wrapper {
     max-width: 1280px;
     width: 90%;
     margin: 0 auto;
 }
 
-/* General Image Styles */
+/* GENERAL IMAGE STYLES */
 img {
     max-width: 100%;
     height: auto;
     object-fit: cover;
-    display: block;
 }
 
-/* General Button Styles */
+/* GENERAL BUTTON STYLES */
+button, a { color: inherit; }
+
 button {
-    cursor: pointer;
     letter-spacing: 1.2px;
-    font-weight: bold;
+    background-color: #F4CBC6;
+    border: 3px solid #3A2D32;
 }
 
-/* Displaly */
+button, select, a { cursor: pointer; }
+
+/* DISPLAY/FLEXBOX */
+img, .highlightContainer:before, 
+.authorHighlight:before { display: block; }
+
+a, .highlightContainer, .polaroidText p { display: inline-block; }
+
 .flexContainer { display: flex; }
+
+main, .polaroidText,
+.selectionContainer, .polaroidCard {
+    flex-direction: column;
+    justify-content: center;
+}
+
+main, form,
+.selectionContainer, .polaroidText { align-items: center; }
+
+/* POSITION */
+.highlightContainer, .highlight, 
+.camera, .imageContainer,
+.polaroidText p, .authorHighlight:before { position: relative; }
+
+.rainbowContainer, .overlay,
+.highlightContainer:before { position: absolute; }
+
+/* STYLING FOR HIGHLIGHTS */
+.highlightContainer:before, 
+.authorHighlight:before {
+    content: " ";
+    width: 100%;
+    margin-left: -3px;
+    margin-right: -3px;
+    padding: 10px 3px 3px 10px;
+    border-radius: 20% 25% 20% 24%;
+    opacity: 0.7;
+    transform: rotate(-3deg);
+}
+
+/* BACKGROUND COLORS */
+.highlightContainer:before, 
+select, .polaroidCard,
+.submit:hover, .submit:focus { background-color: #FFF; } 
+
+/* WIDTH/HEIGHT */
+.rainbowContainer, label, 
+.selectButtonDiv, .polaroidImage { width: 100%; }
+
+main { min-height: calc(100vh - 180px); }

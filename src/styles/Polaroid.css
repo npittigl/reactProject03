@@ -1,72 +1,110 @@
-
-/* Styles for Polaroid Pictures */
+/* STYLES FOR POLAROID PICTURES */
 .polaroidCard {
-    flex-direction: column;
-    margin: 20px 20px ;
+    margin: 20px;
     width: calc((100% / 2) - 40px);
-    background-color: #FFF;
     border: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.imageContainer {
-    padding: 20px 20px 0 20px;
-}
+/* Polaroid Images Styles */
+.imageContainer { padding: 20px 20px 0 20px; }
 
 .polaroidImage {
-    width: 100%;
     height: 350px;
     border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
+.overlay {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 20px 20px 0 20px;
+    background-color: #000;
+}
+
+/* Polaroid Text Styles */
 .polaroidText {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     flex-grow: 1;
     padding: 25px;
-    text-align: center;
 }
 
 h3 {
-    font-size: 1rem;
     line-height: 1.3rem;
-    letter-spacing: 1px;
     font-family: 'Gloria Hallelujah', cursive;
 }
 
 .polaroidText p {
     color: #000;
-    font-size: 0.95rem;
     line-height: 1rem;
-    letter-spacing: 1px;
-    font-family: 'Satisfy', cursive;
+    font-size: 0.95rem;
     padding: 1rem 0 0.5rem 0;
-    position: relative;
-    display: inline-block;
     z-index: 10;
 }
 
+/* Highlight Styles */
 .authorHighlight:before {
-    content: " ";
-    display: block;
-    width: 100%;
-    margin-left: -3px;
-    margin-right: -3px;
-    padding: 10px 3px 3px 10px;
-    border-radius: 20% 25% 20% 24%;
-    opacity: 0.7;
-    transform: rotate(-3deg);
-    position: absolute;
-    top: 28px;
+    top: 23px;
     left: 1px;
     z-index: -10;
 }
 
-ul li:nth-child(even) .authorHighlight:before {
-    background-color: #F4AFAB;
+ul li:nth-child(odd) .authorHighlight:before { background-color: #99FFFF; }
+
+ul li:nth-child(even) .authorHighlight:before { background-color: #F4AFAB; }
+
+/* Polaroid Animation */
+.fadeOutOpacity {
+    animation: fadeOut 6s  0.8s ease-in forwards;
+    -webkit-animation: fadeOut 6s  0.8s ease-in forwards;
+    -moz-animation: fadeOut 6s 0.8s ease-in forwards;
+    -o-animation: fadeOut 6s 0.8s ease-in forwards;
+    -ms-animation: fadeOut 6s 0.8s ease-in forwards;
 }
 
-ul li:nth-child(odd) .authorHighlight:before {
-    background-color: #99FFFF;
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    25% { opacity: 0.8; }
+    50% { opacity: 0.6; }
+    75% { opacity: 0.4; }
+    85% { opacity: 0.2; }
+    100% { opacity: 0; }
 }
+
+@-moz-keyframes fadeOut {
+    0% { opacity: 1; }
+    25% { opacity: 0.8; }
+    50% { opacity: 0.6; }
+    75% { opacity: 0.4; }
+    85% { opacity: 0.2; }
+    100% { opacity: 0; }
+}
+
+@-webkit-keyframes fadeOut {
+    0% { opacity: 1; }
+    25% { opacity: 0.8; }
+    50% { opacity: 0.6; }
+    75% { opacity: 0.4; }
+    85% { opacity: 0.2; }
+    100% { opacity: 0; }
+}
+
+@-o-keyframes fadeOut {
+    0% { opacity: 1; }
+    25% { opacity: 0.8; }
+    50% { opacity: 0.6; }
+    75% { opacity: 0.4; }
+    85% { opacity: 0.2; }
+    100% { opacity: 0; }
+}
+
+@-ms-keyframes fadeOut {
+    0% { opacity: 1; }
+    25% { opacity: 0.8; }
+    50% { opacity: 0.6; }
+    75% { opacity: 0.4; }
+    85% { opacity: 0.2; }
+    100% { opacity: 0; }
+}
+

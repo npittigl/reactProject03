@@ -1,51 +1,100 @@
-/* Styles for Form */
-
+/* STYLES FOR FORM */
 form {
-    flex-direction: column;
-    justify-content: center;
-    width: 70%;
     font-size: 1.1rem;
-    padding-left: 1.5rem;
+    justify-content: space-between;
+}
+
+/* Camera Image */
+.camera {
+    left: 30px;
+    width: 30%;
+    min-width: 200px;
+}
+
+/* Form label/select/button Styles */
+.selectionContainer {
+    width: 70%;
+    height: 80%;
+    padding: 2rem;
+    border: 3px solid #81D8D0;
+    background-color: rgba(255, 255, 255, 0.65);
+    box-shadow: inset 1px 1px 3px 2px #3A2D32, 
+                inset -1px -1px 3px 2px #3A2D32, 
+                2px 2px 0px #3A2D32, -2px -2px 0px #3A2D32, 
+                2px -2px 0px #3A2D32, -2px 2px 0px #3A2D32, 
+                6px 6px 0px #F4AFAB, -6px -6px 0px #F4AFAB, 
+                6px -6px 0px #F4AFAB, -6px 6px 0px #F4AFAB, 
+                8px 8px 0px #3A2D32, -8px -8px 0px #3A2D32, 
+                8px -8px 0px #3A2D32, -8px 8px 0px #3A2D32;
 }
 
 label {
-    width: 100%;
-    font-weight: bold;
-    text-align: left;
-    padding: 10px 20px;
-}
-
-.selectionContainer {
-    width: 100%;
-    text-align: left;
+    padding: 8px 0px;
+    margin-bottom: 7px;
+    letter-spacing: 1.5px;
 }
 
 select {
-    font-size: 1rem;
-    font-weight: bold;
-    letter-spacing: 1.2px;
-    margin: 5px 0 5px 20px;
-    width: calc(50% - 20px);
-    background-color: #F7EDF0;
+    margin: 5px 1% 5px 0px;
+    width: calc(60% - 1%);
+    padding: 12px 2px 12px 12px;
     border: 3px solid #3A2D32;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png);
+    background-repeat: no-repeat;
+    background-position: 95% center;
 }
 
 .submit {
-    margin: 5px 10px;
-    width: calc(35% - 20px);
+    padding: 12px 0px;
+    margin: 5px 0px 5px 1%;
+    width: calc(40% - 1%);
 }
 
-select,
-.submit {
-    padding: 15px;
+select:hover, select:focus,
+.submit:hover, .submit:focus {
+    border: 3px solid #81D8D0;
+    box-shadow: inset 2px 2px 3px #3A2D32, inset -2px -2px 3px #3A2D32;
 }
 
-.submit {
-    background-color: #F4CBC6;
-    border: 3px solid #3A2D32;
+/* Error Message Styles */
+.errorMessage { 
+    font-size: 0.75rem;
+    padding: 7px 3px 0 3px;
 }
 
-.submit:hover,
-.submit:focus {
-    background-color: #F7EDF0;
+/* MEDIA QUERIES */
+@media (max-width: 740px) {
+    form { font-size: 1rem; }
+
+    .camera { left: 20px; }
+
+    label { text-align: center; }
+
+    .selectButtonDiv { flex-wrap: wrap; }
+
+    select,
+    .submit {
+        width: 100%;
+        margin: 5px 0;
+        text-align: center;
+    }
+}
+
+@media (max-width: 580px) {
+    form { flex-direction: column; }
+
+    .camera {
+        position: static;
+        width: 55%;
+    }
+
+    .selectionContainer {
+        width: 100%;
+        padding: 3rem 1rem 2rem;
+        position: relative;
+        bottom: 50px;
+        z-index: -100;
+    }
 }

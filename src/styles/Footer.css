@@ -1,25 +1,15 @@
-
-/* Styles for Footer */
+/* STYLES FOR FOOTER */
 footer {
     padding: 10px 0;
-    text-align: center;
     font-size: 0.80rem;
     line-height: 0.85rem;
-    font-weight: bold;
-    letter-spacing: 1.2px;
-    margin: 0;
 }
 
 footer a {
-    color: inherit;
-    cursor: pointer;
     padding-bottom: 3px;
     text-decoration: none;
-    display: inline-block;
 }
 
-footer a:hover,
-footer a:focus { 
-    color: #AA0000;
-}
+a:hover, a:focus,
+.errorMessage { color: #AA0000; }
 

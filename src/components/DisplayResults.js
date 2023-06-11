@@ -1,12 +1,13 @@
 // Import hooks from React library
 import { useState, useEffect } from 'react';
-// Import children components
+// Import children components/data
 import Form from './Form.js';
 import Polaroid from './Polaroid.js';
+import Button from './Button.js';
+import imagesToRemove from './imagesToRemove.js';
 // import styles
 import '../styles/DisplayResults.css';
-import '../styles/MediaQueries.css';
-import pic from '../styles/assets/polaroidCamera05.png';
+
 
 // function to display results
 function DisplayResults() {
@@ -14,30 +15,12 @@ function DisplayResults() {
     const [quotes, setQuotes] = useState([]);
     const [images, setImages] = useState([]);
     const [mergedArray, setMergedArray] = useState([]);
-    const [displayCount, setDisplayCount] = useState(4);
+    const [displayCount, setDisplayCount] = useState(0);
+    const [apiError, setApiError] = useState(false);
+    const [formSubmitted, setFormSubmitted] = useState(false);
 
     // number of random quotes to generate
     const numQuotesToGenerate = 30;
-
-    // array of id's for unwanted images 
-    const imagesToRemove = [
-        { id: '5c5VcFshOds' },
-        { id: '8lnbXtxFGZw' },
-        { id: 'W8Qqn1PmQH0' },
-        { id: 'G6G93jtU1vE' },
-        { id: 'fgmf2Eyrwm4' },
-        { id: 'nDeo4F3Zq28' },
-        { id: 'c333d6YEhi0' },
-        { id: 'gGbuETcoKjw' },
-        { id: 'bV_mp5XqWc4' },
-        { id: 'zunGugEsJCE' },
-        { id: 'l1AdCsEnjh0' },
-        { id: 'vKBdY7e7KFk' },
-        { id: 'MYu49bghVAM' },
-        { id: 'Ncn1jiEe-Wc' },
-        { id: '09AhDCedXF8' },
-        { id: 'UyNrNfdKjwg' }
-    ];
 
     // useEffect to merge quotes & images array; update mergedArray state and to rerender when quotes/images state changes
     useEffect(() => {
@@ -68,7 +51,8 @@ function DisplayResults() {
 
         // parameters for images API
         urlImages.search = new URLSearchParams({
-            client_id: 'REqOx30PIWR_6rWocyz4elwZzhGfXxnuatZSAtqnhG8',
+            // client_id: 'REqOx30PIWR_6rWocyz4elwZzhGfXxnuatZSAtqnhG8',
+            client_id: 'nvmvnGROiYUaP-TIj0V8RUA7NjMa_Fx320ZoOD17FVY',
             collections: '2738300',
             count: 30,
         })
@@ -133,36 +117,44 @@ function DisplayResults() {
                 )
             });
 
-            // 2. update imagess state with new array
+            // 2. update images state with new array
             setImages(filteredImagesArray);
+
+            // update displayCount state
+            setDisplayCount(2);
+            // update formSubmitted state to true
+            setFormSubmitted(true);
         } catch (error) {
-            console.log(error);
+            // if error, set apiError to true
+            setApiError(true);
         }
     }
     
-    // event handler to add more li items to page by an increment of 2
-    const handleClickShowMore = () => {
-        let previousCount = displayCount;
-        setDisplayCount(previousCount + 4);
-    }
-
     // array of items to be displayed
     const itemsToDisplay = mergedArray.slice(0, displayCount);
 
-    // event handler to clear page of results
+    // event handler to add more li items to page by an increment of 2
+    const handleClickShowMore = () => {
+        let previousCount = displayCount;
+        setDisplayCount(previousCount + 2);
+    }
+
+    // event handler to clear page of results & reset formSubmitted state to false
     const handleClickNewSearch = () => {
         setDisplayCount(0);
+        setFormSubmitted(false); 
     }
 
     // what is rendered on page
     return (
         <section className="resultsSection wrapper">
-            <div className=" formContainer flexContainer">
-                <div className="camera flexContainer">
-                    <img src={pic} alt="polaroid camera" />
-                </div>
-                <Form submitForm={getApiData} />
-            </div>
+            {formSubmitted ? null : (
+                <Form 
+                    submitForm={getApiData} 
+                    apiError={apiError}
+                    setApiError={setApiError}
+                />
+            )}
     
             {itemsToDisplay.length ? (
                 <>
@@ -180,8 +172,16 @@ function DisplayResults() {
                         })}
                     </ul>
                     <div className="buttonsContainer flexContainer">
-                        {displayCount === 24 ? null : <button className="showMore" onClick={handleClickShowMore}>Show More</button>}
-                        <button className="newSearch" onClick={handleClickNewSearch}>New Search</button>
+                        { displayCount === 24 ? null :
+                            <Button 
+                                className="showMore" handleClick={handleClickShowMore}
+                                text="Show More"
+                            /> }
+                        <Button 
+                            className="newSearch" 
+                            handleClick={handleClickNewSearch}
+                            text="New Search"
+                        />
                     </div>
                 </> ) : null
             }
