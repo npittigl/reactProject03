@@ -15,7 +15,7 @@ function Header() {
             </div>
             <header className="wrapper">
                 <h1>Instaspiration</h1>
-                <h2>Where <span className="highlightContainer"><span className="highlight">words & images</span></span> create <span className="gradient">instant inspiration</span></h2>
+                <h2>Where <span className="highlightContainer"><span className="highlight">words & images </span></span> create <span className="gradient">instant inspiration</span></h2>
             </header>
         </>
     )

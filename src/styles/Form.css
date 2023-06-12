@@ -40,6 +40,7 @@ select {
     width: calc(60% - 1%);
     padding: 12px 2px 12px 12px;
     border: 3px solid #3A2D32;
+    appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     background-image: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png);
@@ -80,6 +81,8 @@ select:hover, select:focus,
         width: 100%;
         margin: 5px 0;
         text-align: center;
+        -webkit-text-align-last: center;
+        text-align-last: center;
     }
 }
 
