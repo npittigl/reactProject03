@@ -76,12 +76,13 @@ button, select, a { cursor: pointer; }
 img, .highlightContainer:before, 
 .authorHighlight:before { display: block; }
 
-a, .highlightContainer, .polaroidText p { display: inline-block; }
+a, .highlightContainer, 
+.gradient, .polaroidText p { display: inline-block; }
 
 .flexContainer { display: flex; }
 
-main, .polaroidText,
-.selectionContainer, .polaroidCard {
+main, .selectionContainer, 
+.polaroidCard, .polaroidText {
     flex-direction: column;
     justify-content: center;
 }

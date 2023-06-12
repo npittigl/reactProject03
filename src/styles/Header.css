@@ -27,7 +27,7 @@ h1 {
 /* Sub Heading Styles */
 h2 {
     margin-top: 5px;
-    line-height: 1.2rem;
+    line-height: 1.3rem;
 }
 
 /* Positioning for Sub-heading Highlight */
@@ -41,6 +41,7 @@ h2 {
     color: transparent;
     font-family: 'Sansita', sans-serif;
     font-size: 1.18rem;
+    line-height: 1.25rem;
     letter-spacing: 2px;
     -webkit-background-clip: text;
     background-clip: text;
@@ -50,7 +51,7 @@ h2 {
 
 /* MEDIA QUERIES */
 @media (max-width: 480px) {
-    header { padding-top: 0.65rem; }
+    header { padding-top: 0.75rem; }
 
     .rainbowContainer { top: 35px; }
 
