@@ -54,8 +54,9 @@ function Form({ submitForm, apiError, setApiError }) {
                             onChange={handleChange}
                             id="topicChoices"
                             name="topicChoices"
+                            aria-disabled="true"
                     >
-                        <option value="Choose One:" disabled>Choose One:</option>
+                        <option value="Choose One:" disabled selected>Choose One:</option>
                         {optionsArray.map((option, index) => {
                             return <option value={option.query} key={index}>{option.topicSelection}</option>
                         })}
